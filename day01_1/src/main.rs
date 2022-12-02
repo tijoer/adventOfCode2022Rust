@@ -1,18 +1,43 @@
-fn main() {
+fn part1() {
+    let input_data = include_str!("../input.txt")
+        .split("\n\n")
+        .map(|elf| {
+            elf.split('\n')
+                .map(|item| return item.parse::<u32>().unwrap())
+                .sum::<u32>()
+        })
+        .max()
+        .unwrap();
+    println!("{}", input_data);
+}
+
+fn part2() {
     let input_data = include_str!("../input.txt");
-    let calories_per_elve = input_data.split("\n\n");
+    let mut _result = input_data
+        .split("\n\n")
+        .map(|elf| {
+            elf.split('\n')
+                .map(|item| return item.parse::<u32>().unwrap())
+                .sum::<u32>()
+        })
+        .collect::<Vec<u32>>();
 
-    let mut max = 0;
-    for s in calories_per_elve {
-        let mut current_max = 0;
-        for line in s.lines() {
-            current_max = current_max + line.parse::<i32>().unwrap();
-        }
+        let foo = _result.to
+        // _result.sort_by(|a, b| b.cmp(a));
 
-        if current_max > max {
-            max = current_max;
-        }
+        // .iter().take(3).sum();
 
-        println!("{}", max);
-    }
+    // _result.sort_by(|a, b| b.cmp(a));
+    // let sum: u32 = _result.iter().take(3).sum();
+    dbg!(_result);
+    // dbg!(sum);
+
+    // let foo: u32 = _result.iter().rev().take(3).sum();
+
+    // println!("{:?}", foo);
+}
+
+fn main() {
+    part1();
+    part2();
 }
