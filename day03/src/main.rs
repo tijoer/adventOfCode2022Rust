@@ -1,7 +1,10 @@
 
 fn solve() -> u32 {
     // include_str!("../input.txt")
-    return 1;
+
+    let _foo: u32 = 2;
+
+    return _foo;
 }
 
 fn main() {
