@@ -22,7 +22,7 @@ fn part2() {
         })
         .collect::<Vec<u32>>();
 
-        let foo = _result.to
+        // let foo = _result.to
         // _result.sort_by(|a, b| b.cmp(a));
 
         // .iter().take(3).sum();
