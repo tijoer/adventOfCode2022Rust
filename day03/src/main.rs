@@ -1,10 +1,16 @@
 
-fn solve() -> u32 {
+pub fn solve() -> u32 {
     // include_str!("../input.txt")
 
-    let _foo: u32 = 2;
+    let mut _foo: u32 = 2;
 
-    return _foo;
+    _foo = 5;
+
+    _foo = 6;
+
+    _foo = 7;
+
+    _foo
 }
 
 fn main() {
