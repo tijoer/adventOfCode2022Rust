@@ -34,7 +34,7 @@ fn part2() -> u32 {
         .iter()
         .filter(|values| {
             let first_starts_in_second = (values.0 >= values.2) && (values.1 <= values.3);
-            let first_ends_in_second = (values.1 >= values.3) && (values.1 <= values.3);
+            let first_ends_in_second = (values.1 >= values.2) && (values.1 <= values.3);
             let second_starts_in_first = (values.3 >= values.0) && (values.2 <= values.1);
             let second_ends_in_first = (values.3 >= values.0) && (values.3 <= values.1);
 
