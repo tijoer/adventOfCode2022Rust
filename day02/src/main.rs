@@ -1,19 +1,5 @@
 use std::collections::HashMap;
 
-fn calculate_result(result_hash_map: HashMap<&str, (u32, u32)>) -> (u32, u32) {
-    let mut sums = (0, 0);
-
-    include_str!("../input.txt")
-        .lines()
-        .map(|line_score| {
-            sums.0 += result_hash_map.get(line_score).unwrap().0;
-            sums.1 += result_hash_map.get(line_score).unwrap().1;
-        })
-        .collect::<Vec<_>>();
-
-    return sums;
-}
-
 fn solve() -> (u32, u32) {
     let mut result_hash_map: HashMap<_, _> = HashMap::new();
 
@@ -27,11 +13,16 @@ fn solve() -> (u32, u32) {
     result_hash_map.insert("C Y", (2, 6));
     result_hash_map.insert("C Z", (6, 7));
 
-    return calculate_result(result_hash_map);
+    return include_str!("../input.txt")
+    .lines()
+    .fold((0, 0), |cur, nxt| {
+        let foo = result_hash_map.get(nxt).unwrap().0;
+        let bar = result_hash_map.get(nxt).unwrap().1;
+        (cur.0 + foo, cur.1 + bar)
+    });
 }
 
 fn main() {
     println!("part1: {}", solve().0);
     println!("part1: {}", solve().1);
 }
-
