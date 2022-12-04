@@ -1,7 +1,5 @@
-pub fn solve() -> (u32, u32) {
-    let mut _part_2_score: u32 = 0;
-
-    let _part_1_score = include_str!("../input.txt")
+fn get_ranges() -> Vec<(u32, u32, u32, u32)> {
+    return include_str!("../input.txt")
         .lines()
         .map(|lines| {
             let (elf_0, elf_1) = lines.split_once(',').unwrap();
@@ -17,22 +15,38 @@ pub fn solve() -> (u32, u32) {
 
             (range_0_start, range_0_end, range_1_start, range_1_end)
         })
-        .filter(|_range_values| {
-            let first_in_second =
-                (_range_values.0 >= _range_values.2) && (_range_values.1 <= _range_values.3);
-            let second_in_first =
-                (_range_values.0 <= _range_values.2) && (_range_values.1 >= _range_values.3);
+        .collect::<Vec<(_, _, _, _)>>();
+}
+
+fn part1() -> u32 {
+    return get_ranges()
+        .iter()
+        .filter(|values| {
+            let first_in_second = (values.0 >= values.2) && (values.1 <= values.3);
+            let second_in_first = (values.0 <= values.2) && (values.1 >= values.3);
             first_in_second || second_in_first
         })
-        .count();
+        .count() as u32;
+}
 
-    return (_part_1_score as u32, _part_2_score as u32);
+fn part2() -> u32 {
+    return get_ranges()
+        .iter()
+        .filter(|values| {
+            let first_starts_in_second = (values.0 >= values.2) && (values.1 <= values.3);
+            let first_ends_in_second = (values.1 >= values.3) && (values.1 <= values.3);
+            let second_starts_in_first = (values.3 >= values.0) && (values.2 <= values.1);
+            let second_ends_in_first = (values.3 >= values.0) && (values.3 <= values.1);
+
+            first_starts_in_second
+                || first_ends_in_second
+                || second_starts_in_first
+                || second_ends_in_first
+        })
+        .count() as u32;
 }
 
 fn main() {
-    let result = solve();
-    assert_eq!(result.0, 602);
-    // assert_eq!(result.1, 0);
-    println!("day4 part1: {}", result.0);
-    println!("day4 part2: {}", result.1);
+    println!("day4 part1: {}", part1());
+    println!("day4 part2: {}", part2());
 }
