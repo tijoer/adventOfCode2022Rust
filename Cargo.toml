@@ -1,0 +1,13 @@
+[package]
+name = "advent_of_code"
+version = "0.1.0"
+description = "My solutions to Advent of Code 2022."
+license = "MIT"
+keywords = ["advent-of-code", "data-structures", "algorithms"]
+edition = "2021"
+
+[workspace]
+members = [
+    "2019/day*",
+    "2022/day*"
+]
