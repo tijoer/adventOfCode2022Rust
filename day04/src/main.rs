@@ -3,9 +3,11 @@ pub fn solve() -> (u32, u32) {
     let mut part_1_score: u32 = 0;
     let mut part_2_score: u32 = 0;
 
-    include_str!("../input.txt")
+    let foo = include_str!("../input.txt").lines().map(|x| {
+        dbg!(x);
+    });
 
-
+    // dbg!(foo);
     return (part_1_score, part_2_score);
 }
 

@@ -1,0 +1,16 @@
+{
+    "tasks": [
+        {
+            "label": "cargo build",
+            "type": "cargo",
+            "command": "build",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/day04",
+            },
+        }
+    ]
+}
