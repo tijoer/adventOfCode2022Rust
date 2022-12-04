@@ -2,14 +2,8 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/rust
 {
 	"name": "Rust",
-	"image": "mcr.microsoft.com/devcontainers/rust:1-bullseye",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"GitHub.vscode-pull-request-github"
-			]
-		}
-	}
+	"image": "mcr.microsoft.com/devcontainers/rust:1-bullseye"
+	
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
