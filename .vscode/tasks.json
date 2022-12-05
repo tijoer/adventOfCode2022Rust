@@ -9,8 +9,12 @@
             ],
             "group": "build",
             "options": {
-                "cwd": "${workspaceFolder}/day04",
+                "cwd": "${workspaceFolder}/2022/day05",
+                "package": "${workspaceFolder}/2022/day05",
             },
+            "cwd": "${workspaceFolder}/2022/day05",
+            "args": ["--target-dir=target"],
+
         }
     ]
 }

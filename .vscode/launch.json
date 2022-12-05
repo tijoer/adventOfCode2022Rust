@@ -8,9 +8,9 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/2019/day01/target/debug/advent_of_code_19_day_1",
+            "program": "${workspaceFolder}/2022/day05/target/debug/advent_of_code_22_day_5",
             "args": [],
-            "cwd": "${workspaceFolder}/2019/day01",
+            "cwd": "${workspaceFolder}/2022/day05",
             "console":"integratedTerminal",
             "preLaunchTask": "cargo build"
         }
