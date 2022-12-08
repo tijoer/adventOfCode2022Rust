@@ -27,10 +27,10 @@ fn solve(input: &str) -> (i32, i32) {
                 num_visible += 1;
             }
 
-            let left_num = calc_left(row, y, value);
-            let right_num = calc_right(row, y, value);
+            let left_num = calc_left(&row[0..y].to_vec(), y, value);
+            let right_num = calc_right(&row[y + 1..row.len()].to_vec(), y, value);
             let up_num = calc_up(&col[0..x].to_vec(), value);
-            let down_num = calc_down(&col, x, value);
+            let down_num = calc_down(&col[x + 1..col.len()].to_vec(), x, value);
 
             let current_score = left_num * right_num * up_num * down_num;
             if (left_num * right_num * up_num * down_num) > scenic_score {
@@ -47,20 +47,20 @@ fn solve(input: &str) -> (i32, i32) {
 }
 
 fn calc_left(row: &Vec<usize>, y: usize, value: &usize) -> usize {
-    let left_num = (&row[0..y])
+    let left_num =row
         .iter()
         .rev()
-        .position(|el| el >= value)
-        .unwrap_or((&row[0..y]).len() - 1)
+        .position(|&p| &p >= value)
+        .unwrap_or(row.len() - 1)
         + 1;
     left_num
 }
 
 fn calc_right(row: &Vec<usize>, y: usize, value: &usize) -> usize {
-    let right_num = (&row[y + 1..row.len()])
+    let right_num = row
         .iter()
-        .position(|el| el >= value)
-        .unwrap_or((&row[y + 1..row.len()]).len() - 1)
+        .position(|&p| &p >= value)
+        .unwrap_or(row.len() - 1)
         + 1;
     right_num
 }
@@ -69,24 +69,24 @@ fn calc_up(col: &Vec<usize>, value: &usize) -> usize {
     let up_num = col
         .iter()
         .rev()
-        .position(|el| el >= value)
+        .position(|&p| &p >= value)
         .unwrap_or(col.len() - 1)
         + 1;
     up_num
 }
 
 fn calc_down(col: &Vec<usize>, x: usize, value: &usize) -> usize {
-    let down_num = col[x + 1..col.len()]
+    let down_num = col
         .iter()
-        .position(|el| el >= value)
-        .unwrap_or(col[x + 1..col.len()].len() - 1)
+        .position(|&p| &p >= value)
+        .unwrap_or(col.len() - 1)
         + 1;
     down_num
 }
 
 fn main() {
-    println!("day07 part1: {}", solve(include_str!("../input.txt")).0);
-    println!("day07 part1: {}", solve(include_str!("../input.txt")).1);
+    println!("day08 part1: {}", solve(include_str!("../input.txt")).0);
+    println!("day08 part2: {}", solve(include_str!("../input.txt")).1);
 }
 
 #[cfg(test)]
